@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CrudMvcComAdo.Models.Times>
+
+<p>
+    @Html.ActionLink("Cadastrar novo time", "IncluirTime")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoSigla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cores)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoSigla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cores)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "EditarTime", new { id=item.TimesId }) |
+            @Html.ActionLink("Deletar", "ExcluirTime", new { id=item.TimesId },new { onclick = "return confirm('Tem certeza que deseja excluir?');" })
+        </td>
+    </tr>
+}
+
+</table>
